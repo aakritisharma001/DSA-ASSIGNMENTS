@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    string s;
+    cin>>s;
+    int st[100], top=-1;
+    for(int i=0;i<s.size();i++){
+        char c=s[i];
+        if(isdigit(c)) st[++top]=c-'0';
+        else{
+            int b=st[top--];
+            int a=st[top--];
+            if(c=='+') st[++top]=a+b;
+            else if(c=='-') st[++top]=a-b;
+            else if(c=='*') st[++top]=a*b;
+            else if(c=='/') st[++top]=a/b;
+        }
+    }
+    cout<<st[top];
+}
